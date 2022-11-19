@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Char, getChars } from '../types/types';
+import { Char } from '../types/types';
 
-export const getChar = createAsyncThunk<getChars, number>('cartoon/getChar', async (curPage, { rejectWithValue }) => {
+export const getChar = createAsyncThunk<any, number>('cartoon/getChar', async (curPage, { rejectWithValue }) => {
+  const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${curPage}`);
   try {
-    const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${curPage}`);
     if (!res.ok) {
       throw new Error('Не найден API' + `${res.status}`);
     }
@@ -15,14 +15,14 @@ export const getChar = createAsyncThunk<getChars, number>('cartoon/getChar', asy
 });
 
 export const getFilterChar = createAsyncThunk<any, Char>(
-  'cartoon/getChar',
+  'cartoon/getFilterChar',
   async ({ text, status, species, type, gender }, { rejectWithValue }) => {
+    const res = await fetch(
+      `https://rickandmortyapi.com/api/character/?name=${text}&status=${status}&species=${species}&type=${type}&gender=${gender}`
+    );
     try {
-      const res = await fetch(
-        `https://rickandmortyapi.com/api/character/?name=${text}&status=${status}&species=${species}&type=${type}&gender=${gender}`
-      );
-      if (!res.ok) {
-        throw new Error('Не найден API' + `${res.status}`);
+      if (res.status === 404) {
+        throw new Error('Заданный параметр не найден');
       }
       return await res.json();
     } catch (err) {
@@ -32,8 +32,8 @@ export const getFilterChar = createAsyncThunk<any, Char>(
 );
 
 export const getOneChar = createAsyncThunk('blog/getOneChar', async (id: number, { rejectWithValue }) => {
+  const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
   try {
-    const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
     if (!res.ok) {
       throw new Error('Не найден API' + `${res.status}`);
     }

@@ -15,7 +15,6 @@ const Panel = () => {
   const [species, setSpecies] = useState<string>('');
   const [type, setType] = useState<string>('');
   const [gender, setGender] = useState<string>('');
-
   const dispatch = useDispatch<AppDispatch>();
   const { GenderArr, StatusArr } = useSelector((state: any) => state.rickAndMorti);
 

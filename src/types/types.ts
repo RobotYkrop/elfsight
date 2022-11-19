@@ -5,11 +5,24 @@ export interface typeStore {
 export interface initState {
   characters: object[];
   char: Char;
-  isError: boolean;
+  error: SerializedError | any;
   isLoading: boolean;
   pages: number;
+  isOpen: boolean;
   StatusArr: string[];
   GenderArr: string[];
+}
+
+export interface ValidationErrors {
+  errorMessage: string;
+  field_errors: Record<string, string>;
+}
+
+export interface SerializedError {
+  name?: string;
+  message?: string;
+  code?: string;
+  stack?: string;
 }
 
 export interface getChars {
@@ -45,7 +58,7 @@ export interface Location {
   url: string;
 }
 
-export interface PageError extends Error {
+export interface PageError {
   message: string;
   data: null | string | number;
   status: number;
