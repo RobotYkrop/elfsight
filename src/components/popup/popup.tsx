@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactDOM from 'react-dom';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { createSelector } from '@reduxjs/toolkit';
 
 import { getOneChar } from '../../FetchApi/fetchChar';
 import { AppDispatch } from '../../store/store';
@@ -15,21 +16,27 @@ import { Char, typeStore } from '../../types/types';
 import { modalOpen } from '../../store/newSlice';
 
 const Popup = () => {
+  const selectorChar = createSelector(
+    (state: typeStore) => state.rickAndMorti,
+    (state) => state.char
+  );
   const { id } = useParams();
   const TypeId = id as number & string;
   const dispatch = useDispatch<AppDispatch>();
-  const char: Char = useSelector((state: typeStore) => state.rickAndMorti.char);
-  useEffect(() => {
-    console.log(dispatch(getOneChar(TypeId)));
-  }, [dispatch, TypeId]);
+  const char: Char = useSelector(selectorChar);
   const appRoot = document.getElementById('root') as HTMLElement;
+  useEffect(() => {
+    dispatch(getOneChar(TypeId));
+  }, [dispatch, TypeId]);
   console.log(char);
 
   const { name, status, species, image, gender, type } = char;
   return ReactDOM.createPortal(
-    <Card sx={{ minWidth: 275, position: 'absolute', top: 0, right: '950px' }}>
+    <Card data-testid="popup" sx={{ minWidth: 275, position: 'absolute', top: '100px', right: '250px' }}>
       <IconButton sx={{ position: 'absolute', right: 0 }} onClick={() => dispatch(modalOpen(false))}>
-        <CloseIcon />
+        <NavLink data-testid="close-popup" to={'/'}>
+          <CloseIcon />
+        </NavLink>
       </IconButton>
       <CardContent>
         <Typography variant="h3" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -48,4 +55,4 @@ const Popup = () => {
   );
 };
 
-export default React.memo(Popup);
+export default Popup;

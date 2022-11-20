@@ -9,7 +9,7 @@ const initialState: initState = {
   error: null,
   isLoading: true,
   pages: 0,
-  isOpen: false,
+  isOpen: true,
   StatusArr: ['dead', 'alive', 'unknown'],
   GenderArr: ['female', 'male', 'genderless', 'unknown'],
 };

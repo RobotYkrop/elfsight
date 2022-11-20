@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Char } from '../types/types';
+import { Char, getChars } from '../types/types';
 
-export const getChar = createAsyncThunk<any, number>('cartoon/getChar', async (curPage, { rejectWithValue }) => {
+export const getChar = createAsyncThunk<getChars, number>('cartoon/getChar', async (curPage, { rejectWithValue }) => {
   const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${curPage}`);
   try {
     if (!res.ok) {
@@ -14,7 +14,7 @@ export const getChar = createAsyncThunk<any, number>('cartoon/getChar', async (c
   }
 });
 
-export const getFilterChar = createAsyncThunk<any, Char>(
+export const getFilterChar = createAsyncThunk<getChars, Char>(
   'cartoon/getFilterChar',
   async ({ text, status, species, type, gender }, { rejectWithValue }) => {
     const res = await fetch(

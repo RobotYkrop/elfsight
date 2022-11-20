@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './store/store';
 import Popup from './components/popup/popup';
-import ErrorPage from './components/ErrorPage/errorPage';
+import ErrorPage from './components/pages/ErrorPage/errorPage';
 
 import './index.css';
 
