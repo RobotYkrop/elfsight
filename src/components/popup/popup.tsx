@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { NavLink, useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { createSelector } from '@reduxjs/toolkit';
@@ -14,6 +12,8 @@ import { getOneChar } from '../../FetchApi/fetchChar';
 import { AppDispatch } from '../../store/store';
 import { Char, typeStore } from '../../types/types';
 import { modalOpen } from '../../store/newSlice';
+
+import pop from './popup.module.scss';
 
 const Popup = () => {
   const selectorChar = createSelector(
@@ -37,18 +37,14 @@ const Popup = () => {
           <CloseIcon />
         </NavLink>
       </IconButton>
-      <CardContent>
-        <Typography variant="h3" sx={{ fontSize: 14 }} color="text.secondary">
-          {name}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {status}
-        </Typography>
-        <Typography variant="body2">{species}</Typography>
-        <Typography variant="body2">{gender}</Typography>
-        <Typography variant="body2">{type}</Typography>
-        <CardMedia loading="lazy" component="img" height="250" image={image} />
-      </CardContent>
+      <h3 className={pop['name']}>{name}</h3>
+      <ul className={pop['characteristics']}>
+        <li>Status: {status}</li>
+        <li>Species: {species}</li>
+        <li>Gender: {gender}</li>
+        <li>Type: {type ? type : 'No type'}</li>
+      </ul>
+      <img loading="lazy" src={image} alt="avatar" />
     </Card>,
     appRoot
   );
