@@ -7,3 +7,14 @@
     margin: 1em;
     padding: 0;
 }
+.avatar { 
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: none;
+}
