@@ -15,7 +15,7 @@ import char from './charList.module.scss';
 
 const CharList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(1);
 
   const selectorChars = createSelector(
     (state: typeStore) => state.rickAndMorti,
@@ -44,13 +44,7 @@ const CharList = () => {
                 </li>
               ))}
             </ul>
-            <Pagination
-              defaultPage={1}
-              page={offset}
-              count={pages}
-              variant="outlined"
-              onChange={(_, num) => setOffset(num)}
-            />
+            <Pagination page={offset} count={pages} variant="outlined" onChange={(_, num) => setOffset(num)} />
           </div>
         ) : (
           <CircularProgress />

@@ -32,7 +32,7 @@ const Popup = () => {
 
   const { name, status, species, image, gender, type } = char;
   return ReactDOM.createPortal(
-    <Card data-testid="popup" sx={{ minWidth: 275, position: 'absolute', top: '100px', right: '250px' }}>
+    <Card data-testid="popup" sx={{ minWidth: 275, position: 'absolute', top: '20px', right: '200px' }}>
       <IconButton sx={{ position: 'absolute', right: 0 }} onClick={() => dispatch(modalOpen(false))}>
         <NavLink data-testid="close-popup" to={'/'}>
           <CloseIcon />
@@ -48,7 +48,7 @@ const Popup = () => {
         <Typography variant="body2">{species}</Typography>
         <Typography variant="body2">{gender}</Typography>
         <Typography variant="body2">{type}</Typography>
-        <CardMedia component="img" height="140" image={image} />
+        <CardMedia component="img" height="300" image={image} />
       </CardContent>
     </Card>,
     appRoot
