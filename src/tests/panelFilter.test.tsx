@@ -5,6 +5,7 @@ import Panel from '../components/filterPanel/panel';
 import { getChar, getOneChar } from '../FetchApi/fetchChar';
 import store from '../store/store';
 
+// Много тестов не добавлял
 describe('tests', () => {
   test('close and open popup', () => {
     jest.mock('react-redux', () => {

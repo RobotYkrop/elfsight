@@ -34,7 +34,7 @@ const CharList = () => {
     <div>
       {(error && <Alert severity="error">{error?.message}</Alert>) ??
         (!isLoading ? (
-          <div>
+          <>
             <ul className={char['charList']}>
               {characters.map((data: Char) => (
                 <li onClick={() => dispatch(modalOpen(true))} key={data.id}>
@@ -45,7 +45,7 @@ const CharList = () => {
               ))}
             </ul>
             <Pagination page={offset} count={pages} variant="outlined" onChange={(_, num) => setOffset(num)} />
-          </div>
+          </>
         ) : (
           <CircularProgress />
         ))}

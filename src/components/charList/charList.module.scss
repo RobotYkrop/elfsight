@@ -1,3 +1,12 @@
 .charList {
-    list-style-type: none;
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 2em;
+  & li a {
+    text-decoration: none;
+    color: rgb(2, 152, 252);
+    &:hover {
+      color: gray;
+    }
+  }
 }
