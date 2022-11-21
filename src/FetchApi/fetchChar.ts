@@ -2,8 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { Char, getChars } from '../types/types';
 
+const URL = 'https://rickandmortyapi.com/api/character/';
+
 export const getChar = createAsyncThunk<getChars, number>('cartoon/getChar', async (curPage, { rejectWithValue }) => {
-  const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${curPage}`);
+  const res = await fetch(URL + `?page=${curPage}`);
   try {
     if (!res.ok) {
       throw new Error('Не найден API' + `${res.status}`);
@@ -17,9 +19,7 @@ export const getChar = createAsyncThunk<getChars, number>('cartoon/getChar', asy
 export const getFilterChar = createAsyncThunk<getChars, Char>(
   'cartoon/getFilterChar',
   async ({ text, status, species, type, gender }, { rejectWithValue }) => {
-    const res = await fetch(
-      `https://rickandmortyapi.com/api/character/?name=${text}&status=${status}&species=${species}&type=${type}&gender=${gender}`
-    );
+    const res = await fetch(URL + `?name=${text}&status=${status}&species=${species}&type=${type}&gender=${gender}`);
     try {
       if (res.status === 404) {
         throw new Error('Заданный параметр не найден');
@@ -32,7 +32,7 @@ export const getFilterChar = createAsyncThunk<getChars, Char>(
 );
 
 export const getOneChar = createAsyncThunk('blog/getOneChar', async (id: number, { rejectWithValue }) => {
-  const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+  const res = await fetch(URL + id);
   try {
     if (!res.ok) {
       throw new Error('Не найден API' + `${res.status}`);
