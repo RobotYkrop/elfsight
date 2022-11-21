@@ -24,46 +24,42 @@ const Panel = () => {
   }, [dispatch, text, status, species, type, gender]);
 
   return (
-    <div>
-      <label className={pan['groupFilter']}>
-        <OutlinedInput
-          data-testid="filter-name"
-          placeholder={'name'}
-          type={'text'}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <Autocomplete
-          id="size-small-standard-multi"
-          data-testid="filter-status"
-          size="small"
-          options={StatusArr}
-          getOptionLabel={(option: string): string => option}
-          onChange={(e) => setStatus((e.target as HTMLElement).textContent!)}
-          renderInput={(params) => <TextField {...params} variant="standard" label="Status" />}
-        />
-        <OutlinedInput
-          data-testid="filter-species"
-          type={'text'}
-          placeholder={'species'}
-          onChange={(e) => setSpecies(e.target.value)}
-        />
-        <OutlinedInput
-          data-testid="filter-type"
-          type={'text'}
-          placeholder={'type'}
-          onChange={(e) => setType(e.target.value)}
-        />
-        <Autocomplete
-          data-testid="filter-gender"
-          id="size-small-standard-multi"
-          size="small"
-          options={GenderArr}
-          getOptionLabel={(option: string): string => option}
-          onChange={(e) => setGender((e.target as HTMLElement).textContent!)}
-          renderInput={(params) => <TextField {...params} variant="standard" label="Gender" />}
-        />
-      </label>
-    </div>
+    <label className={pan['groupFilter']}>
+      <OutlinedInput
+        data-testid="filter-name"
+        placeholder={'name'}
+        type={'text'}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <Autocomplete
+        data-testid="filter-status"
+        size="small"
+        options={StatusArr}
+        getOptionLabel={(option: string): string => option}
+        onChange={(e) => setStatus((e.target as HTMLElement).textContent!)}
+        renderInput={(params) => <TextField {...params} variant="standard" label="Status" />}
+      />
+      <OutlinedInput
+        data-testid="filter-species"
+        type={'text'}
+        placeholder={'species'}
+        onChange={(e) => setSpecies(e.target.value)}
+      />
+      <OutlinedInput
+        data-testid="filter-type"
+        type={'text'}
+        placeholder={'type'}
+        onChange={(e) => setType(e.target.value)}
+      />
+      <Autocomplete
+        data-testid="filter-gender"
+        size="small"
+        options={GenderArr}
+        getOptionLabel={(option: string): string => option}
+        onChange={(e) => setGender((e.target as HTMLElement).textContent!)}
+        renderInput={(params) => <TextField {...params} variant="standard" label="Gender" />}
+      />
+    </label>
   );
 };
 
