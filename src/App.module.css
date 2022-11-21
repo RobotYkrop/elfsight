@@ -1,0 +1,12 @@
+.app {
+  margin-top: 5em;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  -ms-grid-columns: 20em 22em;
+      grid-template-columns: 20em 22em;
+}
+/*# sourceMappingURL=App.module.css.map */

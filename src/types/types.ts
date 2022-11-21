@@ -11,6 +11,15 @@ export interface initState {
   isOpen: boolean;
   StatusArr: string[];
   GenderArr: string[];
+  filters: queryFilter;
+}
+
+export interface queryFilter {
+  text: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
 }
 
 export interface ValidationErrors {

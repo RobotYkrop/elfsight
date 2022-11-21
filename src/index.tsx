@@ -29,7 +29,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
-      {/* Можно было и обычным useReducer обойтись, но я решил попробовать через Redux */}
     </Provider>
   </React.StrictMode>
 );

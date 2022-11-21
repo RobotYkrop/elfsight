@@ -28,7 +28,6 @@ const Popup = () => {
   useEffect(() => {
     dispatch(getOneChar(TypeId));
   }, [dispatch, TypeId]);
-  console.log(char);
 
   const { name, status, species, image, gender, type } = char;
   return ReactDOM.createPortal(
@@ -39,7 +38,7 @@ const Popup = () => {
         </NavLink>
       </IconButton>
       <CardContent>
-        <Typography variant="h3" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography variant="h3" sx={{ fontSize: 14 }} color="text.secondary">
           {name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -48,7 +47,7 @@ const Popup = () => {
         <Typography variant="body2">{species}</Typography>
         <Typography variant="body2">{gender}</Typography>
         <Typography variant="body2">{type}</Typography>
-        <CardMedia component="img" height="300" image={image} />
+        <CardMedia loading="lazy" component="img" height="250" image={image} />
       </CardContent>
     </Card>,
     appRoot

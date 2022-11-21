@@ -12,6 +12,13 @@ const initialState: initState = {
   isOpen: true,
   StatusArr: ['dead', 'alive', 'unknown'],
   GenderArr: ['female', 'male', 'genderless', 'unknown'],
+  filters: {
+    text: '',
+    status: '',
+    species: '',
+    type: '',
+    gender: '',
+  },
 };
 
 const rickAndMorti = createSlice({
@@ -20,6 +27,21 @@ const rickAndMorti = createSlice({
   reducers: {
     modalOpen: (state, action) => {
       state.isOpen = action.payload;
+    },
+    setText: (state, action) => {
+      state.filters.text = action.payload;
+    },
+    setStatus: (state, action) => {
+      state.filters.status = action.payload;
+    },
+    setSpecies: (state, action) => {
+      state.filters.species = action.payload;
+    },
+    setType: (state, action) => {
+      state.filters.type = action.payload;
+    },
+    setGender: (state, action) => {
+      state.filters.gender = action.payload;
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -53,6 +75,6 @@ const rickAndMorti = createSlice({
     });
   },
 });
-export const { modalOpen } = rickAndMorti.actions;
+export const { modalOpen, setGender, setSpecies, setStatus, setText, setType } = rickAndMorti.actions;
 
 export default rickAndMorti.reducer;

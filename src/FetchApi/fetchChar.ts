@@ -15,7 +15,6 @@ export const getChar = createAsyncThunk<getChars, number>('cartoon/getChar', asy
     return rejectWithValue(err);
   }
 });
-
 export const getFilterChar = createAsyncThunk<getChars, Char>(
   'cartoon/getFilterChar',
   async ({ text, status, species, type, gender }, { rejectWithValue }) => {

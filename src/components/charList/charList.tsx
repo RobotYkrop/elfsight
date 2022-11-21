@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Alert from '@mui/material/Alert';
 import Pagination from '@mui/material/Pagination';
-import CircularProgress from '@mui/material/CircularProgress';
 import { NavLink } from 'react-router-dom';
 import { createSelector } from '@reduxjs/toolkit';
 
@@ -22,19 +21,19 @@ const CharList = () => {
     (state) => state.characters
   );
 
-  const error = useSelector((state: typeStore) => state.rickAndMorti.error, shallowEqual);
-  const isLoading = useSelector((state: typeStore) => state.rickAndMorti.isLoading, shallowEqual);
-  const pages = useSelector((state: typeStore) => state.rickAndMorti.pages, shallowEqual);
-  const characters = useSelector(selectorChars, shallowEqual);
+  const error = useSelector((state: typeStore) => state.rickAndMorti.error);
+  const isLoading = useSelector((state: typeStore) => state.rickAndMorti.isLoading);
+  const pages = useSelector((state: typeStore) => state.rickAndMorti.pages);
+  const characters = useSelector(selectorChars);
   console.log(characters);
   useEffect(() => {
-    console.log(dispatch(getChar(offset)));
+    dispatch(getChar(offset));
   }, [dispatch, offset, setOffset]);
   return (
-    <div>
+    <>
       {(error && <Alert severity="error">{error?.message}</Alert>) ??
         (!isLoading ? (
-          <>
+          <div>
             <ul className={char['charList']}>
               {characters.map((data: Char) => (
                 <li onClick={() => dispatch(modalOpen(true))} key={data.id}>
@@ -45,11 +44,11 @@ const CharList = () => {
               ))}
             </ul>
             <Pagination page={offset} count={pages} variant="outlined" onChange={(_, num) => setOffset(num)} />
-          </>
+          </div>
         ) : (
-          <CircularProgress />
+          <span>Идет загрузка.....</span>
         ))}
-    </div>
+    </>
   );
 };
 

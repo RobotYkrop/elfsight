@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,eAAe,EAAE,IAAI;EACrB,UAAU,EAAE,CAAC;EACb,aAAa,EAAE,GAAG;CAQnB;;AAXD,AAIE,SAJO,CAIL,EAAE,CAAC,CAAC,CAAC;EACL,eAAe,EAAE,IAAI;EACrB,KAAK,EAAE,KAAK;CAIb;;AAVH,AAOI,SAPK,CAIL,EAAE,CAAC,CAAC,AAGH,MAAM,CAAC;EACN,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "charList.module.scss"
+    ],
+    "names": [],
+    "file": "charList.module.css"
+}
