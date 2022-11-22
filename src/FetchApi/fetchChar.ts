@@ -30,7 +30,7 @@ export const getFilterChar = createAsyncThunk<getChars, Char>(
   }
 );
 
-export const getOneChar = createAsyncThunk('blog/getOneChar', async (id: number, { rejectWithValue }) => {
+export const getOneChar = createAsyncThunk('cartoon/getOneChar', async (id: number, { rejectWithValue }) => {
   const res = await fetch(URL + id);
   try {
     if (!res.ok) {
